@@ -1,4 +1,5 @@
-﻿using HealthFoodStore.Models;
+﻿using HealthFoodStore.Entities;
+using HealthFoodStore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,10 +13,12 @@ namespace HealthFoodStore.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            this.context = context;
         }
 
         public IActionResult Index()
@@ -23,8 +26,10 @@ namespace HealthFoodStore.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(String userName, String passWord)
+        public IActionResult Index(User user)
         {
+            context.Users.Add(user);
+            context.SaveChanges();
             return View();
         }
 
