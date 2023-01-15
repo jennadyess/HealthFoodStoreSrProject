@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <div class="login">
+        <form method="post" asp-action="Index"> 
+        <input type="text" placeholder="Username" name="userName" />
+        <input type="password" placeholder="Password" name="passWord"/>
+        <div>
+            <input type="submit" class="btn btn-secondary" id="submit" name="Submit" value="Submit" />
+            <input type="button" class="btn btn-info" id="reset" name="Reset" value="Reset" />
+        </div>
+        </form>
+    </div>
+</div>
+
